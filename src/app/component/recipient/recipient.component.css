@@ -1,0 +1,30 @@
+.modal-dialog{
+  top: 150px;
+}
+.removePad{
+  padding-left:0;
+  padding-right:0;
+}
+.blue-outline-button {
+  color: #2681aa;
+  border-color: #2681aa;
+  padding: 5px 40px;
+}
+.red-outline-button {
+  color: #ffd2d6;
+  border-color: #ffd2d6;
+  padding: 5px 30px;
+
+}
+td, th {
+  padding: 10px;
+}
+.button{
+  border-width: 1px;
+  border-style: solid;
+  height: 40px;
+  cursor: pointer;
+}
+table{
+  width: 65% !important;
+}

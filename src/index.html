@@ -5,10 +5,42 @@
   <title>CicApp</title>
   <base href="/">
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="8bit-32x32.png">
 </head>
 <body>
-  <app-root></app-root>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 navbar-header">
+      <div class="col-md-6"><a class="navbar-brand" href="#">CIC APP</a></div>
+      <div class="col-md-6">
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-right"  routerLinkActive="active">
+            <li id="home"><a  href="\home"><span class="	fa fa-home"></span> Home</a></li>
+            <li id="recipients"><a href="\recipients"><span class="fa fa-address-book-o"></span> Recipients</a></li>
+            <li id="send"><a href="\send-email"><span class="fa fa-envelope-o"></span> Send Email</a></li>
+          </ul>
+        </div>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<app-root></app-root>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
 </body>
 </html>
+
+</body>

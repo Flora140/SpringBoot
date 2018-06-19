@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+body{
+  background-color: #F7F7F7;
+}
+nav{
+  overflow: visible !important;
+  z-index: 999;
+  border-bottom: 1px solid #e4e4e4;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1) !important;
+  background: #fff;
+  border-radius: 0 !important;
+}
+.navbar-nav {
+  display: inline !important;
+}
+.navbar-brand{
+  font-size: 3.5em;
+}
+.navbar-inverse {
+  background-color: #4a4848;
+  border-color: #4a4848;
+}
+.center-content{
+  float: none;
+  margin: 0 auto;
+}
+.blue-solid-button{
+  background: #2681aa;
+  color: white;
+  float: right;
+  font-size: 12px;
+  padding: 5px;
+  margin-right: 5px;
+}
+.alert{
+  padding: 15px;
+}
+.modal-backdrop.in {
+  opacity: .5 !important;
+}
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+.alert {
+  padding: 5px 10px;
+}
+.active{
+  background: #000;
+}

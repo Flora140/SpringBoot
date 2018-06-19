@@ -1,0 +1,84 @@
+<div id="send-email" class="container">
+   <div id="alerts">
+    <!-- Errors -->
+    <div *ngIf="errorMessage"  class="alert alert-warning"> {{errorMessage}} </div>
+     <div id ="errors" class="alert alert-warning" *ngIf="emailForm.form.touched && !emailForm.form.valid">
+     <!-- Validations -->
+      <div class="row">
+        <div *ngIf="subject.errors && subject.touched">Message subject is required</div>
+      </div>
+       <div class="row">
+         <div *ngIf="body.errors && body.touched">Message body is required</div>
+       </div>
+      <div class="row">
+        <div *ngIf="email.errors &&(email.touched || email.dirty)">
+          <div [hidden]="!email.errors?.pattern">
+            Please provide a valid email address
+          </div>
+          <div [hidden]="!email.errors?.required">
+            Email is required
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Success -->
+     <div *ngIf="messageBody" [ngClass] = "'row alert alert-success'"> Success: The email has been sent</div>
+   </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+      <h3 class="text-left">Send an email</h3>
+    </div>
+  </div>
+  <form  name="form" (ngSubmit)="emailForm.form.valid && sendEmail(recipient.emailAddress)" #emailForm="ngForm" novalidate>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="form-group">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <label> To :   </label>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <input type="text" class="form-control" id="email"
+                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" [(ngModel)]="recipient.emailAddress"
+                     #email="ngModel" [ngClass]="{ 'is-invalid': emailForm.submitted && emailForm.invalid }" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="form-group">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <label> Subject :   </label>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <input [(ngModel)]="cic.subject" #subject="ngModel" type="text" class="form-control" id="subject"
+                     name="subject" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+          <div class="form-group">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+              <label> Message :   </label>
+            </div>
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+              <textarea rows="4" cols="50" class="form-control" [(ngModel)]="cic.body" #body="ngModel" name="body" required>
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 text-right">
+          <button class="btn blue-solid-button pad" id="submit" [disabled]="!emailForm.form.valid">
+            Send
+          </button>
+        </div>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,56 @@
+<div id="home-page" class="container">
+
+  <div id="alerts">
+    <!-- Errors -->
+    <div *ngIf="errorMessage && !recipientName"  class="alert alert-warning"> {{errorMessage}} </div>
+    <div id ="errors" class="alert alert-warning" *ngIf="home.form.touched && !home.form.valid">
+      <!-- Validations -->
+      <div class="row">
+        <div *ngIf="name.errors && name.touched">Name is required</div>
+      </div>
+      <div class="row">
+        <div *ngIf="email.errors &&(email.touched || email.dirty)">
+          <div [hidden]="!email.errors?.pattern">
+            Please provide a valid email address
+          </div>
+          <div [hidden]="!email.errors?.required">
+            Email is required
+          </div>
+        </div>
+      </div>
+     </div>
+    <!-- Success -->
+    <div *ngIf="recipientName" [ngClass] = "'row alert alert-success'"> New recipient {{recipientName}} has been Added. </div>
+
+  </div>
+
+  <h3>Stay tuned!</h3>
+  <p>Sign up to our mail register to receive payment reminders, latest offers and news updates and more</p>
+  <form  name="form" (ngSubmit)="home.form.valid && register()" #home="ngForm" novalidate>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 center-content">
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div class="form-group">
+              <input type="text" class="form-control" id="name" placeholder="Enter Full name"  name="name"
+                     required [(ngModel)]="recipient.name"
+                     #name="ngModel" [ngClass]="{ 'is-invalid': home.submitted && name.invalid }" >
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="email" placeholder="Enter email address"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" name="email" [(ngModel)]="recipient.emailAddress"
+                       #email="ngModel" [ngClass]="{ 'is-invalid': home.submitted && email.invalid }" required>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="row center-content">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 center-content">
+        <button type="submit" class="btn blue-solid-button" [disabled]="!home.form.valid">
+         Register<i class="fa fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
